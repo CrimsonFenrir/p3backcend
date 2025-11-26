@@ -1,14 +1,4 @@
-mysite/
-├── calificaciones/   # App principal con modelos y vistas
-├── api/              # Endpoints REST
-├── consumers/        # Lógica de Kafka consumidor
-├── producers/        # Lógica de Kafka productor
-├── metrics/          # Integración Prometheus
-├── docker-compose.yml
-├── requirements.txt
-└── manage.py
-
-
+mysite/ ├── calificaciones/ # App principal con modelos, vistas y lógica de negocio │ ├── api/ # Endpoints RESTful para acceso externo │ ├── consumers/ # Lógica de consumo de eventos Kafka │ ├── producers/ # Lógica de emisión de eventos Kafka │ ├── metrics/ # Exposición de métricas para Prometheus ├── docker-compose.yml # Definición de servicios Kafka y Zookeeper ├── requirements.txt # Lista de dependencias del proyecto └── manage.py # Entrada principal del proyecto Django
 
 
 
