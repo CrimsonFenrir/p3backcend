@@ -1,0 +1,81 @@
+# 📗 Manual de Usuario — Sistema de Calificaciones (Django + Kafka + Prometheus)
+
+## 🧭 Introducción
+Este manual explica cómo utilizar la aplicación de calificaciones financieras desarrollada en Django, con integración de Kafka para eventos en tiempo real y Prometheus para monitoreo. Está dirigido a usuarios finales que necesitan gestionar calificaciones, factores y consultar métricas.
+
+---
+
+## 🔐 Acceso al sistema
+- **Login:** ingresar en `/login` con usuario y contraseña.
+- **Credenciales iniciales:**
+  - Usuario: `admin`
+  - Contraseña: `123admin`
+- **Panel de administración:** disponible en `/admin`.
+
+---
+
+## 🗺️ Navegación principal
+- **Inicio:** `/`
+- **Calificaciones:** `/calificaciones`
+- **Factores:** `/factores`
+- **Importación:** `/calificaciones/importar`
+- **API REST:** `/api/`
+- **Métricas Prometheus:** `/metrics`
+
+---
+
+## 📌 Gestión de calificaciones
+### Crear
+1. Ir a `/calificaciones/nueva`.
+2. Completar campos: instrumento, fecha, rating, fuente, notas opcionales.
+3. Guardar → se registra en base de datos y se emite evento Kafka.
+
+### Editar
+1. Ir a `/calificaciones/<id>/editar`.
+2. Modificar campos necesarios.
+3. Guardar → se actualiza y se emite evento Kafka.
+
+### Eliminar
+1. Ir a `/calificaciones/<id>/eliminar`.
+2. Confirmar acción → se elimina de la base de datos.
+
+### Listar y filtrar
+- Ruta: `/calificaciones`
+- Filtrar por fecha, instrumento, rating o fuente.
+
+---
+
+## 🧩 Gestión de factores
+- **Crear:** `/factores/nuevo`
+- **Editar:** `/factores/<id>/editar`
+- **Eliminar:** `/factores/<id>/eliminar`
+- **Campos:** nombre, tipo, descripción, unidad.
+- **Asociación:** vincular factor a calificación desde formulario.
+
+---
+
+## 📥 Importación desde Excel
+1. Preparar archivo `.xlsx` o `.csv` con columnas: instrumento, fecha, rating, fuente, factores.
+2. Ir a `/calificaciones/importar`.
+3. Subir archivo y revisar previsualización.
+4. Confirmar → se importan registros y se actualizan métricas.
+
+---
+
+## 🔗 API REST
+### Endpoints principales
+- `GET /api/calificaciones/` → listar calificaciones.
+- `GET /api/calificaciones/<id>/` → detalle.
+- `POST /api/calificaciones/` → crear.
+- `PUT /api/calificaciones/<id>/` → actualizar.
+- `DELETE /api/calificaciones/<id>/` → eliminar.
+
+### Ejemplo de creación
+```json
+{
+  "instrumento": "Bono AAA",
+  "fecha": "2025-11-26",
+  "rating": "AAA",
+  "fuente": "Agencia X",
+  "notas": "Estable"
+}
