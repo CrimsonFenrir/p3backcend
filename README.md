@@ -1,6 +1,15 @@
-mysite/ ├── calificaciones/ # App principal con modelos, vistas y lógica de negocio │ ├── api/ # Endpoints RESTful para acceso externo │ ├── consumers/ # Lógica de consumo de eventos Kafka │ ├── producers/ # Lógica de emisión de eventos Kafka │ ├── metrics/ # Exposición de métricas para Prometheus ├── docker-compose.yml # Definición de servicios Kafka y Zookeeper ├── requirements.txt # Lista de dependencias del proyecto └── manage.py # Entrada principal del proyecto Django
+### 📁 Descripción de carpetas
 
+- `calificaciones/`: módulo principal de la aplicación, contiene modelos, formularios, vistas y lógica de negocio.
+- `calificaciones/api/`: define los endpoints REST usando Django REST Framework.
+- `calificaciones/consumers/`: gestiona la recepción de eventos Kafka y su procesamiento.
+- `calificaciones/producers/`: publica eventos Kafka al crear o modificar calificaciones.
+- `calificaciones/metrics/`: expone métricas personalizadas en `/metrics` para Prometheus.
+- `docker-compose.yml`: configura los servicios de Kafka y Zookeeper para desarrollo local.
+- `requirements.txt`: contiene todas las dependencias necesarias para instalar el entorno.
+- `manage.py`: script de entrada para ejecutar comandos Django (migraciones, servidor, etc.).
 
+---
 
 # 📘 Sistema de Calificaciones – Django + Kafka + Prometheus
 
