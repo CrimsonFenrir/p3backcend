@@ -1,5 +1,8 @@
 Juan Jacome
 
+windows unicamente
+
+
 ### 📁 Descripción de carpetas
 
 - `calificaciones/`: módulo principal de la aplicación, contiene modelos, formularios, vistas y lógica de negocio.
